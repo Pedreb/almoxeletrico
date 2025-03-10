@@ -1,7 +1,6 @@
 import streamlit as st
 import sqlite3
 import pandas as pd
-import xlsxwriter
 
 # Função para criar conexão com o banco de dados e ativar FOREIGN KEY
 def get_db_connection():
