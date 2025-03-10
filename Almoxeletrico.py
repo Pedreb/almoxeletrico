@@ -1,9 +1,17 @@
 import streamlit as st
 import sqlite3
 import pandas as pd
+import xlsxwriter
+
+# Função para criar conexão com o banco de dados e ativar FOREIGN KEY
+def get_db_connection():
+    conn = sqlite3.connect("estoque.db", check_same_thread=False)
+    c = conn.cursor()
+    c.execute("PRAGMA foreign_keys = ON;")  # Ativando suporte a FOREIGN KEY
+    return conn
 
 # Conexão com banco de dados SQLite
-conn = sqlite3.connect("estoque.db", check_same_thread=False)
+conn = get_db_connection()
 c = conn.cursor()
 
 # Criando tabelas
